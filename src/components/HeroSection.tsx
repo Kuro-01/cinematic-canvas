@@ -59,9 +59,7 @@ const HeroSection = () => {
             transition={{ duration: 1, delay: 0.8, ease: [0.23, 1, 0.32, 1] }}
             className="font-display text-6xl sm:text-7xl md:text-8xl lg:text-9xl leading-[0.9] tracking-[0.02em] text-foreground mt-6"
           >
-            NIVINE
-            <br />
-            <span className="text-secondary">MEDIA</span>
+            HANS
           </motion.h1>
 
           <motion.div
