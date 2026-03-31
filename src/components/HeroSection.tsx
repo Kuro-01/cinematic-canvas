@@ -8,9 +8,9 @@ const navItems = [
 ];
 
 const featuredThumbnails = [
-  { id: "zUwvMSWfiXo", title: "Nova Shyvana", views: "197.1K views", likes: "10.4K likes" },
-  { id: "EhugG-LIqX4", title: "Gnar Fila de Mestres", views: "82K views" },
-  { id: "Ap1p1CH8L0M", title: "Streamers na TV", views: "187K views" },
+  { id: "zUwvMSWfiXo", title: "Nova Shyvana", views: "37K views", likes: "3.1K likes" },
+  { id: "EhugG-LIqX4", title: "Gnar Fila de Mestres", views: "25K views", likes: "2.1K likes" },
+  { id: "FM93OmrhEFI", title: "Joguei Duo com a Minha Ex", views: "80K views", likes: "9.8K likes" },
 ];
 
 const HeroSection = () => {
