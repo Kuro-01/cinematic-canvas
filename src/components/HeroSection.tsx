@@ -100,7 +100,12 @@ const HeroSection = () => {
           className="relative"
         >
           {/* Main featured thumbnail */}
-          <div className="relative rounded-lg overflow-hidden shadow-2xl">
+          <a
+            href={`https://www.youtube.com/watch?v=${featuredThumbnails[0].id}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="relative rounded-lg overflow-hidden shadow-2xl block group/main"
+          >
             <div className="absolute top-3 left-3 z-10 bg-secondary px-3 py-1 rounded-sm">
               <span className="font-body text-[10px] tracking-[0.2em] uppercase text-secondary-foreground font-semibold">
                 PROJETO EM DESTAQUE
@@ -109,16 +114,19 @@ const HeroSection = () => {
             <img
               src={`https://img.youtube.com/vi/${featuredThumbnails[0].id}/maxresdefault.jpg`}
               alt={featuredThumbnails[0].title}
-              className="w-full aspect-video object-cover"
+              className="w-full aspect-video object-cover transition-transform duration-500 group-hover/main:scale-105"
               loading="lazy"
             />
+            <div className="absolute inset-0 bg-background/0 group-hover/main:bg-background/20 transition-colors duration-500 flex items-center justify-center">
+              <span className="opacity-0 group-hover/main:opacity-100 transition-opacity duration-500 text-foreground text-4xl">▶</span>
+            </div>
             <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-background/90 to-transparent p-4">
               <div className="flex items-center gap-4 text-muted-foreground font-body text-xs">
                 <span className="flex items-center gap-1">👁 {featuredThumbnails[0].views}</span>
                 <span className="flex items-center gap-1">👍 {featuredThumbnails[0].likes}</span>
               </div>
             </div>
-          </div>
+          </a>
 
           {/* Stacked smaller thumbnails */}
           <motion.div
