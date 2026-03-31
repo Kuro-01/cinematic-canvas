@@ -31,8 +31,11 @@ const ContactSection = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.8, delay: 0.2 }}
           className="space-y-10"
-          onSubmit={(e) => e.preventDefault()}
+          action="https://formsubmit.co/im.hns991@gmail.com"
+          method="POST"
         >
+          <input type="hidden" name="_captcha" value="false" />
+          <input type="hidden" name="_template" value="table" />
           {[
             { name: "nome", label: "Seu Nome", type: "text" },
             { name: "email", label: "Seu Email", type: "email" },
@@ -55,6 +58,8 @@ const ContactSection = () => {
               </label>
               <input
                 type={field.type}
+                name={field.name}
+                required
                 className="input-cinematic w-full mt-2 font-body text-sm"
                 onFocus={() => setFocused(field.name)}
                 onBlur={() => setFocused(null)}
