@@ -11,10 +11,10 @@ const FooterSection = () => {
         className="flex flex-col md:flex-row items-center justify-between gap-6"
       >
         <span className="font-display text-xl tracking-[0.2em] text-foreground">
-          REEL
+          HANS
         </span>
         <div className="flex items-center gap-8">
-          {["Instagram", "Vimeo", "YouTube"].map((social) => (
+          {["Instagram", "X", "YouTube"].map((social) => (
             <a
               key={social}
               href="#"

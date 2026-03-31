@@ -2,9 +2,9 @@ import { motion, useInView } from "framer-motion";
 import { useRef, useEffect, useState } from "react";
 
 const stats = [
-  { number: 150, suffix: "+", label: "Projetos Entregues" },
-  { number: 40, suffix: "M+", label: "Visualizações" },
-  { number: 8, suffix: "", label: "Anos de Experiência" },
+  { number: 100, suffix: "+", label: "Projetos Entregues" },
+  { number: 10, suffix: "M+", label: "Visualizações" },
+  { number: 1, suffix: "+", label: "Anos de Experiência" },
   { number: 98, suffix: "%", label: "Clientes Satisfeitos" },
 ];
 
@@ -87,7 +87,7 @@ const StatsSection = () => {
           Marcas que confiam no meu trabalho
         </p>
         <div className="flex flex-wrap justify-center items-center gap-12 md:gap-20">
-          {["NIKE", "SONY", "RED BULL", "NETFLIX", "ADIDAS"].map((brand, i) => (
+          {["JOVIRONE", "ESA", "TWITCHZOW", "HAUZ", "INVOKERS"].map((brand, i) => (
             <motion.span
               key={brand}
               initial={{ opacity: 0 }}
