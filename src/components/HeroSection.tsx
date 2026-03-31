@@ -8,9 +8,9 @@ const navItems = [
 ];
 
 const featuredThumbnails = [
-  { id: "zUwvMSWfiXo", title: "Nova Shyvana", views: "197.1K views", likes: "10.4K likes" },
-  { id: "EhugG-LIqX4", title: "Gnar Fila de Mestres", views: "82K views" },
-  { id: "Ap1p1CH8L0M", title: "Streamers na TV", views: "187K views" },
+  { id: "zUwvMSWfiXo", title: "Nova Shyvana", views: "37K views", likes: "3.1K likes" },
+  { id: "EhugG-LIqX4", title: "Gnar Fila de Mestres", views: "25K views", likes: "2.1K likes" },
+  { id: "FM93OmrhEFI", title: "Joguei Duo com a Minha Ex", views: "80K views", likes: "9.8K likes" },
 ];
 
 const HeroSection = () => {
@@ -50,7 +50,7 @@ const HeroSection = () => {
             transition={{ duration: 0.8, delay: 0.6 }}
             className="font-body text-[10px] md:text-xs tracking-[0.3em] uppercase text-secondary"
           >
-            // GESTÃO DE CRIADORES DE CONTEÚDO
+            // EDITOR DE VÍDEO
           </motion.span>
 
           <motion.h1
@@ -59,9 +59,7 @@ const HeroSection = () => {
             transition={{ duration: 1, delay: 0.8, ease: [0.23, 1, 0.32, 1] }}
             className="font-display text-6xl sm:text-7xl md:text-8xl lg:text-9xl leading-[0.9] tracking-[0.02em] text-foreground mt-6"
           >
-            NIVINE
-            <br />
-            <span className="text-secondary">MEDIA</span>
+            HANS
           </motion.h1>
 
           <motion.div
@@ -71,7 +69,7 @@ const HeroSection = () => {
             className="mt-8 border-l-2 border-secondary pl-4"
           >
             <p className="font-body text-sm md:text-base text-muted-foreground max-w-sm leading-relaxed">
-              Edição de vídeo, thumbnails, Reels e gestão de canal para criadores no YouTube.
+              Edição de vídeo e thumbnails.
             </p>
           </motion.div>
 
