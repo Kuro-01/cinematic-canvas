@@ -1,102 +1,156 @@
 import { motion } from "framer-motion";
-import heroBg from "@/assets/hero-bg.jpg";
+
+const navItems = [
+  { label: "VIDEOS LONGOS", href: "#longformat" },
+  { label: "VIDEOS CURTOS", href: "#shortformat" },
+  { label: "THUMBNAILS", href: "#thumbnails" },
+  { label: "CONTATO", href: "#contato", highlight: true },
+];
+
+const featuredThumbnails = [
+  { id: "zUwvMSWfiXo", title: "Nova Shyvana", views: "197.1K views", likes: "10.4K likes" },
+  { id: "EhugG-LIqX4", title: "Gnar Fila de Mestres", views: "82K views" },
+  { id: "Ap1p1CH8L0M", title: "Streamers na TV", views: "187K views" },
+];
 
 const HeroSection = () => {
   return (
-    <section className="relative h-screen w-full overflow-hidden">
-      {/* Background with Ken Burns */}
-      <div className="absolute inset-0">
-        <img
-          src={heroBg}
-          alt="Cinematic editing workspace"
-          width={1920}
-          height={1080}
-          className="h-full w-full object-cover animate-ken-burns"
-        />
-        <div className="cinematic-overlay absolute inset-0" />
-      </div>
-
+    <section className="relative min-h-screen w-full overflow-hidden bg-background">
       {/* Navigation */}
       <motion.nav
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 1, delay: 0.5 }}
-        className="relative z-10 flex items-center justify-between px-8 md:px-16 pt-8"
+        transition={{ duration: 1, delay: 0.3 }}
+        className="relative z-10 flex items-center justify-center px-6 md:px-16 pt-8"
       >
-        <span className="font-display text-2xl tracking-[0.2em] text-foreground">
-          HANS
-        </span>
-        <div className="hidden md:flex items-center gap-10">
-          {["Portfólio", "Sobre", "Contato"].map((item) => (
+        <div className="flex items-center border border-border rounded-full px-2 py-1.5 w-full max-w-4xl justify-between">
+          {navItems.map((item) => (
             <a
-              key={item}
-              href={`#${item.toLowerCase()}`}
-              className="font-body text-xs tracking-[0.3em] uppercase text-muted-foreground hover:text-foreground transition-colors duration-500"
+              key={item.label}
+              href={item.href}
+              className={`font-body text-[10px] md:text-xs tracking-[0.2em] uppercase px-4 md:px-8 py-2 transition-colors duration-300 ${
+                item.highlight
+                  ? "text-secondary"
+                  : "text-muted-foreground hover:text-foreground"
+              }`}
             >
-              {item}
+              {item.label}
             </a>
           ))}
         </div>
       </motion.nav>
 
       {/* Hero Content */}
-      <div className="relative z-10 flex h-full items-center justify-center -mt-20">
-        <div className="text-center px-6">
-          <motion.div
-            initial={{ scaleX: 0 }}
-            animate={{ scaleX: 1 }}
-            transition={{ duration: 1.2, delay: 0.8, ease: [0.23, 1, 0.32, 1] }}
-            className="mx-auto mb-8 h-px w-20 bg-muted-foreground/50 origin-center"
-          />
+      <div className="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center px-6 md:px-16 pt-16 md:pt-24 pb-16">
+        {/* Left side - Text */}
+        <div>
+          <motion.span
+            initial={{ opacity: 0, x: -30 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, delay: 0.6 }}
+            className="font-body text-[10px] md:text-xs tracking-[0.3em] uppercase text-secondary"
+          >
+            // GESTÃO DE CRIADORES DE CONTEÚDO
+          </motion.span>
+
           <motion.h1
             initial={{ opacity: 0, y: 60 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, delay: 1.0, ease: [0.23, 1, 0.32, 1] }}
-            className="font-display text-6xl sm:text-7xl md:text-8xl lg:text-9xl xl:text-[10rem] leading-[0.85] tracking-[0.05em] text-foreground"
+            transition={{ duration: 1, delay: 0.8, ease: [0.23, 1, 0.32, 1] }}
+            className="font-display text-6xl sm:text-7xl md:text-8xl lg:text-9xl leading-[0.9] tracking-[0.02em] text-foreground mt-6"
           >
-            CADA FRAME
+            NIVINE
             <br />
-            <span className="text-gradient">CONTA</span>
+            <span className="text-secondary">MEDIA</span>
           </motion.h1>
-          <motion.p
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 1.4, ease: [0.23, 1, 0.32, 1] }}
-            className="mt-8 font-body text-sm md:text-base tracking-[0.15em] text-muted-foreground max-w-md mx-auto"
-          >
-            Edição cinematográfica que transforma visão em impacto
-          </motion.p>
+
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 1.8 }}
-            className="mt-12"
+            transition={{ duration: 0.8, delay: 1.2 }}
+            className="mt-8 border-l-2 border-secondary pl-4"
+          >
+            <p className="font-body text-sm md:text-base text-muted-foreground max-w-sm leading-relaxed">
+              Edição de vídeo, thumbnails, Reels e gestão de canal para criadores no YouTube.
+            </p>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 1.5 }}
+            className="mt-10 flex items-center gap-4"
           >
             <a href="#portfólio">
+              <button className="px-8 py-3 bg-secondary text-secondary-foreground font-body text-xs tracking-[0.2em] uppercase rounded-sm hover:bg-secondary/90 transition-colors">
+                VER PORTFÓLIO
+              </button>
+            </a>
+            <a href="#contato">
               <button className="btn-cinematic">
-                <span>Ver Trabalhos</span>
+                <span>ENTRE EM CONTATO</span>
               </button>
             </a>
           </motion.div>
         </div>
-      </div>
 
-      {/* Scroll indicator */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 1, delay: 2.5 }}
-        className="absolute bottom-10 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-3"
-      >
-        <span className="font-body text-[10px] tracking-[0.4em] uppercase text-muted-foreground">
-          Scroll
-        </span>
+        {/* Right side - Featured project thumbnails */}
         <motion.div
-          animate={{ y: [0, 8, 0] }}
-          transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-          className="w-px h-8 bg-gradient-to-b from-muted-foreground/60 to-transparent"
-        />
-      </motion.div>
+          initial={{ opacity: 0, x: 50 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 1, delay: 1.0, ease: [0.23, 1, 0.32, 1] }}
+          className="relative"
+        >
+          {/* Main featured thumbnail */}
+          <div className="relative rounded-lg overflow-hidden shadow-2xl">
+            <div className="absolute top-3 left-3 z-10 bg-secondary px-3 py-1 rounded-sm">
+              <span className="font-body text-[10px] tracking-[0.2em] uppercase text-secondary-foreground font-semibold">
+                PROJETO EM DESTAQUE
+              </span>
+            </div>
+            <img
+              src={`https://img.youtube.com/vi/${featuredThumbnails[0].id}/maxresdefault.jpg`}
+              alt={featuredThumbnails[0].title}
+              className="w-full aspect-video object-cover"
+              loading="lazy"
+            />
+            <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-background/90 to-transparent p-4">
+              <div className="flex items-center gap-4 text-muted-foreground font-body text-xs">
+                <span className="flex items-center gap-1">👁 {featuredThumbnails[0].views}</span>
+                <span className="flex items-center gap-1">👍 {featuredThumbnails[0].likes}</span>
+              </div>
+            </div>
+          </div>
+
+          {/* Stacked smaller thumbnails */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 1.4 }}
+            className="absolute -bottom-6 -right-4 md:right-0 flex gap-2"
+          >
+            {featuredThumbnails.slice(1).map((thumb, i) => (
+              <div
+                key={thumb.id}
+                className="w-32 md:w-40 rounded-md overflow-hidden border-2 border-background shadow-xl"
+                style={{ transform: `rotate(${i === 0 ? -3 : 2}deg)` }}
+              >
+                <img
+                  src={`https://img.youtube.com/vi/${thumb.id}/mqdefault.jpg`}
+                  alt={thumb.title}
+                  className="w-full aspect-video object-cover"
+                  loading="lazy"
+                />
+                <div className="bg-card p-1.5">
+                  <span className="font-body text-[8px] text-muted-foreground">
+                    {thumb.views}
+                  </span>
+                </div>
+              </div>
+            ))}
+          </motion.div>
+        </motion.div>
+      </div>
     </section>
   );
 };
