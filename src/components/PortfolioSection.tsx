@@ -56,6 +56,7 @@ const VideoEmbed = ({
 const PortfolioSection = () => {
   return (
     <section id="portfólio" className="section-padding">
+
       <motion.div
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -72,7 +73,7 @@ const PortfolioSection = () => {
       </motion.div>
 
       {/* LONG FORMAT */}
-      <div className="mb-16 md:mb-24">
+      <div id="longformat" className="mb-16 md:mb-24">
         <h3 className="font-display text-2xl md:text-3xl tracking-[0.15em] text-foreground mb-8">
           LONG FORMAT
         </h3>
@@ -90,7 +91,7 @@ const PortfolioSection = () => {
       </div>
 
       {/* SHORT FORMAT */}
-      <div>
+      <div id="shortformat">
         <h3 className="font-display text-2xl md:text-3xl tracking-[0.15em] text-foreground mb-8">
           SHORT FORMAT
         </h3>
