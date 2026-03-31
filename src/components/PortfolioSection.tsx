@@ -91,7 +91,7 @@ const PortfolioSection = () => {
       </div>
 
       {/* SHORT FORMAT */}
-      <div>
+      <div id="shortformat">
         <h3 className="font-display text-2xl md:text-3xl tracking-[0.15em] text-foreground mb-8">
           SHORT FORMAT
         </h3>
