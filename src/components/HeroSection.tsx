@@ -24,7 +24,7 @@ const HeroSection = () => {
         className="relative z-10 flex items-center justify-between px-8 md:px-16 pt-8"
       >
         <span className="font-display text-2xl tracking-[0.2em] text-foreground">
-          REEL
+          HANS
         </span>
         <div className="hidden md:flex items-center gap-10">
           {["Portfólio", "Sobre", "Contato"].map((item) => (

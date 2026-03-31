@@ -14,7 +14,7 @@ const FooterSection = () => {
           HANS
         </span>
         <div className="flex items-center gap-8">
-          {["Instagram", "Vimeo", "YouTube"].map((social) => (
+          {["Instagram", "X", "YouTube"].map((social) => (
             <a
               key={social}
               href="#"

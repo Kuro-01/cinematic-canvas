@@ -87,7 +87,7 @@ const StatsSection = () => {
           Marcas que confiam no meu trabalho
         </p>
         <div className="flex flex-wrap justify-center items-center gap-12 md:gap-20">
-          {["NIKE", "SONY", "RED BULL", "NETFLIX", "ADIDAS"].map((brand, i) => (
+          {["JOVIRONE", "ESA", "TWITCHZOW", "HAUZ", "INVOKERS"].map((brand, i) => (
             <motion.span
               key={brand}
               initial={{ opacity: 0 }}
