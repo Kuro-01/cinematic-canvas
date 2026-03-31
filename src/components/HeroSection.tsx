@@ -50,7 +50,7 @@ const HeroSection = () => {
             transition={{ duration: 0.8, delay: 0.6 }}
             className="font-body text-[10px] md:text-xs tracking-[0.3em] uppercase text-secondary"
           >
-            // GESTÃO DE CRIADORES DE CONTEÚDO
+            // EDITOR DE VÍDEO
           </motion.span>
 
           <motion.h1
