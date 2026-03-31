@@ -69,7 +69,7 @@ const HeroSection = () => {
             className="mt-8 border-l-2 border-secondary pl-4"
           >
             <p className="font-body text-sm md:text-base text-muted-foreground max-w-sm leading-relaxed">
-              Edição de vídeo, thumbnails, Reels e gestão de canal para criadores no YouTube.
+              Edição de vídeo e thumbnails.
             </p>
           </motion.div>
 
