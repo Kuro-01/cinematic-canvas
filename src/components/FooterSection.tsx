@@ -14,13 +14,19 @@ const FooterSection = () => {
           HANS
         </span>
         <div className="flex items-center gap-8">
-          {["Instagram", "X", "YouTube"].map((social) => (
+          {[
+            { label: "Instagram", href: "https://www.instagram.com/paulo.aoj/" },
+            { label: "X", href: "https://x.com/hannslol1" },
+            { label: "YouTube", href: "https://www.youtube.com/@iam.hans9" },
+          ].map((social) => (
             <a
-              key={social}
-              href="#"
+              key={social.label}
+              href={social.href}
+              target="_blank"
+              rel="noopener noreferrer"
               className="font-body text-xs tracking-[0.2em] uppercase text-muted-foreground hover:text-foreground transition-colors duration-500"
             >
-              {social}
+              {social.label}
             </a>
           ))}
         </div>

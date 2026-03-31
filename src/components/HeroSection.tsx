@@ -136,15 +136,18 @@ const HeroSection = () => {
             className="absolute -bottom-6 -right-4 md:right-0 flex gap-2"
           >
             {featuredThumbnails.slice(1).map((thumb, i) => (
-              <div
+              <a
                 key={thumb.id}
-                className="w-32 md:w-40 rounded-md overflow-hidden border-2 border-background shadow-xl"
+                href={`https://www.youtube.com/watch?v=${thumb.id}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-32 md:w-40 rounded-md overflow-hidden border-2 border-background shadow-xl group/thumb transition-transform duration-300 hover:scale-110 hover:z-10"
                 style={{ transform: `rotate(${i === 0 ? -3 : 2}deg)` }}
               >
                 <img
                   src={`https://img.youtube.com/vi/${thumb.id}/mqdefault.jpg`}
                   alt={thumb.title}
-                  className="w-full aspect-video object-cover"
+                  className="w-full aspect-video object-cover transition-transform duration-500 group-hover/thumb:scale-105"
                   loading="lazy"
                 />
                 <div className="bg-card p-1.5">
@@ -152,7 +155,7 @@ const HeroSection = () => {
                     {thumb.views}
                   </span>
                 </div>
-              </div>
+              </a>
             ))}
           </motion.div>
         </motion.div>
