@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Grotesk:wght@300;400;500;600;700&family=Orbitron:wght@400;500;600;700;800;900&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -6,52 +6,52 @@
 
 @layer base {
   :root {
-    --background: 0 0% 4%;
+    --background: 240 15% 4%;
     --foreground: 0 0% 95%;
 
-    --card: 0 0% 7%;
+    --card: 240 15% 7%;
     --card-foreground: 0 0% 95%;
 
-    --popover: 0 0% 7%;
+    --popover: 240 15% 7%;
     --popover-foreground: 0 0% 95%;
 
-    --primary: 0 0% 95%;
-    --primary-foreground: 0 0% 4%;
+    --primary: 263 70% 58%;
+    --primary-foreground: 0 0% 100%;
 
-    --secondary: 210 60% 45%;
-    --secondary-foreground: 210 60% 95%;
+    --secondary: 220 70% 55%;
+    --secondary-foreground: 0 0% 100%;
 
-    --muted: 0 0% 15%;
-    --muted-foreground: 0 0% 55%;
+    --muted: 240 10% 12%;
+    --muted-foreground: 240 5% 50%;
 
-    --accent: 30 15% 50%;
-    --accent-foreground: 0 0% 95%;
+    --accent: 263 70% 58%;
+    --accent-foreground: 0 0% 100%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 0 0% 15%;
-    --input: 0 0% 15%;
-    --ring: 0 0% 40%;
+    --border: 240 10% 14%;
+    --input: 240 10% 14%;
+    --ring: 263 70% 58%;
 
-    --radius: 0.25rem;
+    --radius: 0.5rem;
 
-    --sidebar-background: 0 0% 6%;
+    --sidebar-background: 240 15% 5%;
     --sidebar-foreground: 0 0% 85%;
-    --sidebar-primary: 0 0% 95%;
-    --sidebar-primary-foreground: 0 0% 4%;
-    --sidebar-accent: 0 0% 12%;
+    --sidebar-primary: 263 70% 58%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 10% 12%;
     --sidebar-accent-foreground: 0 0% 85%;
-    --sidebar-border: 0 0% 15%;
-    --sidebar-ring: 0 0% 40%;
+    --sidebar-border: 240 10% 14%;
+    --sidebar-ring: 263 70% 58%;
 
-    --font-display: 'Bebas Neue', sans-serif;
+    --font-display: 'Orbitron', 'Bebas Neue', sans-serif;
     --font-body: 'Space Grotesk', sans-serif;
 
-    --gradient-cinematic: linear-gradient(135deg, hsl(0 0% 4%) 0%, hsl(0 0% 8%) 50%, hsl(0 0% 4%) 100%);
-    --gradient-overlay: linear-gradient(180deg, transparent 0%, hsl(0 0% 4% / 0.9) 100%);
-    --gradient-hero: linear-gradient(180deg, hsl(0 0% 4% / 0.3) 0%, hsl(0 0% 4% / 0.7) 50%, hsl(0 0% 4% / 0.95) 100%);
-    --shadow-cinematic: 0 25px 80px -20px hsl(0 0% 0% / 0.6);
+    --neon-glow: 0 0 20px hsl(263 70% 58% / 0.4), 0 0 60px hsl(263 70% 58% / 0.1);
+    --neon-glow-blue: 0 0 20px hsl(220 70% 55% / 0.4), 0 0 60px hsl(220 70% 55% / 0.1);
+    --glass-bg: hsl(240 15% 8% / 0.6);
+    --glass-border: hsl(240 10% 20% / 0.4);
   }
 }
 
@@ -72,52 +72,104 @@
   h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-display);
   }
+
+  ::selection {
+    background: hsl(263 70% 58% / 0.3);
+    color: hsl(0 0% 100%);
+  }
 }
 
 @layer components {
   .text-gradient {
     @apply bg-clip-text text-transparent;
-    background-image: linear-gradient(135deg, hsl(0 0% 100%) 0%, hsl(0 0% 60%) 100%);
+    background-image: linear-gradient(135deg, hsl(263 70% 70%) 0%, hsl(220 70% 65%) 50%, hsl(263 70% 58%) 100%);
+  }
+
+  .text-gradient-subtle {
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(135deg, hsl(0 0% 100%) 0%, hsl(0 0% 70%) 100%);
+  }
+
+  .glass {
+    background: var(--glass-bg);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid var(--glass-border);
+  }
+
+  .glass-card {
+    background: hsl(240 15% 6% / 0.8);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid hsl(240 10% 18% / 0.5);
+    transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+  }
+
+  .glass-card:hover {
+    border-color: hsl(263 70% 58% / 0.3);
+    box-shadow: var(--neon-glow);
+  }
+
+  .neon-border {
+    border: 1px solid hsl(263 70% 58% / 0.3);
+    box-shadow: var(--neon-glow);
+  }
+
+  .neon-text {
+    text-shadow: 0 0 10px hsl(263 70% 58% / 0.5), 0 0 30px hsl(263 70% 58% / 0.2);
   }
 
   .cinematic-overlay {
-    background: var(--gradient-hero);
+    background: linear-gradient(180deg, hsl(240 15% 4% / 0.3) 0%, hsl(240 15% 4% / 0.7) 50%, hsl(240 15% 4% / 0.95) 100%);
+  }
+
+  .hero-overlay {
+    background: linear-gradient(180deg, 
+      hsl(240 15% 4% / 0.4) 0%, 
+      hsl(240 15% 4% / 0.2) 30%,
+      hsl(240 15% 4% / 0.3) 60%, 
+      hsl(240 15% 4% / 0.95) 100%
+    );
+  }
+
+  .scanline {
+    background: repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 2px,
+      hsl(0 0% 0% / 0.03) 2px,
+      hsl(0 0% 0% / 0.03) 4px
+    );
   }
 
   .portfolio-card {
-    @apply relative overflow-hidden rounded-sm cursor-pointer;
-    transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+    @apply relative overflow-hidden rounded-lg cursor-pointer;
+    transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
   }
 
   .portfolio-card:hover {
-    transform: scale(1.03);
-  }
-
-  .portfolio-card::after {
-    content: '';
-    @apply absolute inset-0;
-    background: hsl(0 0% 0% / 0.0);
-    transition: background 0.5s cubic-bezier(0.23, 1, 0.32, 1);
-  }
-
-  .portfolio-card:hover::after {
-    background: hsl(0 0% 0% / 0.4);
+    transform: scale(1.02);
+    box-shadow: 0 20px 60px -15px hsl(263 70% 58% / 0.2);
   }
 
   .input-cinematic {
-    @apply bg-transparent border-b border-muted-foreground/30 px-0 py-3 text-foreground placeholder:text-muted-foreground/50;
+    @apply bg-transparent border-b px-0 py-3 placeholder:text-muted-foreground/50;
+    border-color: hsl(240 10% 20%);
+    color: hsl(var(--foreground));
     font-family: var(--font-body);
-    transition: border-color 0.4s ease;
+    transition: border-color 0.4s ease, box-shadow 0.4s ease;
   }
 
   .input-cinematic:focus {
-    @apply outline-none border-foreground;
+    @apply outline-none;
+    border-color: hsl(var(--primary));
+    box-shadow: 0 2px 10px hsl(263 70% 58% / 0.2);
   }
 
   .btn-cinematic {
-    @apply relative px-8 py-3 text-sm tracking-[0.3em] uppercase overflow-hidden;
+    @apply relative px-8 py-3 text-sm tracking-[0.3em] uppercase overflow-hidden rounded-sm;
     font-family: var(--font-body);
-    border: 1px solid hsl(var(--foreground) / 0.3);
+    border: 1px solid hsl(263 70% 58% / 0.4);
     color: hsl(var(--foreground));
     background: transparent;
     transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
@@ -126,7 +178,7 @@
   .btn-cinematic::before {
     content: '';
     @apply absolute inset-0;
-    background: hsl(var(--foreground));
+    background: linear-gradient(135deg, hsl(263 70% 58%), hsl(220 70% 55%));
     transform: scaleX(0);
     transform-origin: right;
     transition: transform 0.5s cubic-bezier(0.23, 1, 0.32, 1);
@@ -138,16 +190,31 @@
   }
 
   .btn-cinematic:hover {
-    color: hsl(var(--background));
+    border-color: hsl(263 70% 58%);
+    box-shadow: var(--neon-glow);
   }
 
   .btn-cinematic span {
     @apply relative z-10;
   }
 
+  .btn-primary-glow {
+    @apply px-8 py-3 text-sm tracking-[0.2em] uppercase font-semibold rounded-sm;
+    font-family: var(--font-body);
+    background: linear-gradient(135deg, hsl(263 70% 58%), hsl(220 70% 55%));
+    color: hsl(0 0% 100%);
+    transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+    box-shadow: 0 4px 20px hsl(263 70% 58% / 0.3);
+  }
+
+  .btn-primary-glow:hover {
+    box-shadow: var(--neon-glow);
+    transform: translateY(-2px);
+  }
+
   .stat-number {
     font-family: var(--font-display);
-    @apply text-6xl md:text-7xl lg:text-8xl leading-none;
+    @apply text-5xl md:text-6xl lg:text-7xl leading-none font-bold;
   }
 
   .section-padding {
@@ -158,4 +225,51 @@
     @apply pointer-events-none fixed inset-0 z-50 opacity-[0.03];
     background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
   }
+
+  .hud-corner {
+    @apply absolute w-4 h-4;
+  }
+
+  .hud-corner::before,
+  .hud-corner::after {
+    content: '';
+    @apply absolute bg-primary/40;
+  }
+
+  .hud-corner-tl::before { @apply top-0 left-0 w-full h-px; }
+  .hud-corner-tl::after { @apply top-0 left-0 w-px h-full; }
+  .hud-corner-tr::before { @apply top-0 right-0 w-full h-px; }
+  .hud-corner-tr::after { @apply top-0 right-0 w-px h-full; }
+  .hud-corner-bl::before { @apply bottom-0 left-0 w-full h-px; }
+  .hud-corner-bl::after { @apply bottom-0 left-0 w-px h-full; }
+  .hud-corner-br::before { @apply bottom-0 right-0 w-full h-px; }
+  .hud-corner-br::after { @apply bottom-0 right-0 w-px h-full; }
+
+  .video-card-overlay {
+    @apply absolute inset-0 flex items-center justify-center;
+    background: hsl(240 15% 4% / 0);
+    transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+  }
+
+  .video-card-overlay:hover {
+    background: hsl(240 15% 4% / 0.6);
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: hsl(240 15% 4%);
+}
+
+::-webkit-scrollbar-thumb {
+  background: hsl(263 70% 58% / 0.3);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(263 70% 58% / 0.5);
 }

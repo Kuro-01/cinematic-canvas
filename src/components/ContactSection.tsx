@@ -1,26 +1,33 @@
 import { motion } from "framer-motion";
 import { useState } from "react";
+import { Send } from "lucide-react";
 
 const ContactSection = () => {
   const [focused, setFocused] = useState<string | null>(null);
 
   return (
-    <section id="contato" className="section-padding border-t border-border">
-      <div className="max-w-2xl mx-auto">
+    <section id="contato" className="section-padding relative overflow-hidden">
+      {/* Ambient glow */}
+      <div className="absolute bottom-0 left-1/4 w-[500px] h-[400px] bg-primary/5 rounded-full blur-[150px] pointer-events-none" />
+
+      <div className="max-w-2xl mx-auto relative">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
-          className="mb-16"
+          className="mb-12"
         >
-          <span className="font-body text-[10px] tracking-[0.4em] uppercase text-muted-foreground">
-            Vamos Conversar
-          </span>
-          <h2 className="font-display text-5xl md:text-6xl lg:text-7xl tracking-[0.05em] text-foreground mt-4">
+          <div className="flex items-center gap-3 mb-4">
+            <div className="w-2 h-2 rounded-full bg-primary animate-pulse-glow" />
+            <span className="font-body text-[10px] tracking-[0.4em] uppercase text-primary/80">
+              Vamos Conversar
+            </span>
+          </div>
+          <h2 className="font-display text-3xl md:text-4xl lg:text-5xl tracking-[0.08em] text-foreground font-bold">
             CONTATO
           </h2>
-          <p className="mt-6 font-body text-sm text-muted-foreground max-w-md leading-relaxed">
+          <p className="mt-4 font-body text-sm text-muted-foreground max-w-md leading-relaxed">
             Tem um projeto em mente? Vamos criar algo cinematográfico juntos.
           </p>
         </motion.div>
@@ -30,7 +37,7 @@ const ContactSection = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8, delay: 0.2 }}
-          className="space-y-10"
+          className="space-y-8"
           action="https://formsubmit.co/im.hns991@gmail.com"
           method="POST"
         >
@@ -51,7 +58,7 @@ const ContactSection = () => {
             >
               <label
                 className={`font-body text-[10px] tracking-[0.3em] uppercase transition-colors duration-400 ${
-                  focused === field.name ? "text-foreground" : "text-muted-foreground"
+                  focused === field.name ? "text-primary" : "text-muted-foreground"
                 }`}
               >
                 {field.label}
@@ -74,7 +81,8 @@ const ContactSection = () => {
             transition={{ duration: 0.6, delay: 0.6 }}
             className="pt-4"
           >
-            <button type="submit" className="btn-cinematic">
+            <button type="submit" className="btn-primary-glow flex items-center gap-2">
+              <Send className="w-4 h-4" />
               <span>Enviar Mensagem</span>
             </button>
           </motion.div>

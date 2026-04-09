@@ -14,7 +14,7 @@ export default {
     },
     extend: {
       fontFamily: {
-        display: ["Bebas Neue", "sans-serif"],
+        display: ["Orbitron", "Bebas Neue", "sans-serif"],
         body: ["Space Grotesk", "sans-serif"],
       },
       colors: {
@@ -76,9 +76,17 @@ export default {
           from: { height: "var(--radix-accordion-content-height)" },
           to: { height: "0" },
         },
-        "ken-burns": {
-          "0%": { transform: "scale(1.0)" },
-          "100%": { transform: "scale(1.15)" },
+        "pulse-glow": {
+          "0%, 100%": { opacity: "0.4" },
+          "50%": { opacity: "1" },
+        },
+        "float": {
+          "0%, 100%": { transform: "translateY(0)" },
+          "50%": { transform: "translateY(-10px)" },
+        },
+        "scan": {
+          "0%": { top: "-10%" },
+          "100%": { top: "110%" },
         },
         "fade-up": {
           "0%": { opacity: "0", transform: "translateY(40px)" },
@@ -88,23 +96,33 @@ export default {
           "0%": { opacity: "0" },
           "100%": { opacity: "1" },
         },
-        "line-expand": {
-          "0%": { transform: "scaleX(0)" },
-          "100%": { transform: "scaleX(1)" },
+        "scale-in": {
+          "0%": { opacity: "0", transform: "scale(0.9)" },
+          "100%": { opacity: "1", transform: "scale(1)" },
         },
-        "counter": {
-          "0%": { opacity: "0", transform: "translateY(20px)" },
+        "slide-up": {
+          "0%": { opacity: "0", transform: "translateY(100%)" },
           "100%": { opacity: "1", transform: "translateY(0)" },
+        },
+        "glitch": {
+          "0%, 100%": { transform: "translate(0)" },
+          "20%": { transform: "translate(-2px, 2px)" },
+          "40%": { transform: "translate(-2px, -2px)" },
+          "60%": { transform: "translate(2px, 2px)" },
+          "80%": { transform: "translate(2px, -2px)" },
         },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
-        "ken-burns": "ken-burns 20s ease-out forwards",
+        "pulse-glow": "pulse-glow 3s ease-in-out infinite",
+        "float": "float 6s ease-in-out infinite",
+        "scan": "scan 4s linear infinite",
         "fade-up": "fade-up 0.8s cubic-bezier(0.23, 1, 0.32, 1) forwards",
         "fade-in": "fade-in 1s ease forwards",
-        "line-expand": "line-expand 1s cubic-bezier(0.23, 1, 0.32, 1) forwards",
-        "counter": "counter 0.6s cubic-bezier(0.23, 1, 0.32, 1) forwards",
+        "scale-in": "scale-in 0.6s cubic-bezier(0.23, 1, 0.32, 1) forwards",
+        "slide-up": "slide-up 0.6s cubic-bezier(0.23, 1, 0.32, 1) forwards",
+        "glitch": "glitch 0.3s ease-in-out",
       },
     },
   },

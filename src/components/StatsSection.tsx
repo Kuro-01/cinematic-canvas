@@ -15,7 +15,6 @@ const AnimatedNumber = ({ target, suffix }: { target: number; suffix: string }) 
 
   useEffect(() => {
     if (!isInView) return;
-    let start = 0;
     const duration = 2000;
     const startTime = Date.now();
 
@@ -23,8 +22,7 @@ const AnimatedNumber = ({ target, suffix }: { target: number; suffix: string }) 
       const elapsed = Date.now() - startTime;
       const progress = Math.min(elapsed / duration, 1);
       const eased = 1 - Math.pow(1 - progress, 3);
-      const current = Math.floor(eased * target);
-      setCount(current);
+      setCount(Math.floor(eased * target));
       if (progress < 1) requestAnimationFrame(tick);
     };
 
@@ -32,7 +30,7 @@ const AnimatedNumber = ({ target, suffix }: { target: number; suffix: string }) 
   }, [isInView, target]);
 
   return (
-    <span ref={ref} className="stat-number text-foreground">
+    <span ref={ref} className="stat-number text-gradient">
       {count}{suffix}
     </span>
   );
@@ -40,67 +38,75 @@ const AnimatedNumber = ({ target, suffix }: { target: number; suffix: string }) 
 
 const StatsSection = () => {
   return (
-    <section className="section-padding border-t border-border">
-      <motion.div
-        initial={{ opacity: 0, y: 30 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.8 }}
-        className="mb-16"
-      >
-        <span className="font-body text-[10px] tracking-[0.4em] uppercase text-muted-foreground">
-          Resultados
-        </span>
-        <h2 className="font-display text-5xl md:text-6xl lg:text-7xl tracking-[0.05em] text-foreground mt-4">
-          NÚMEROS
-        </h2>
-      </motion.div>
+    <section className="section-padding relative overflow-hidden">
+      {/* Ambient glow */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] bg-primary/3 rounded-full blur-[200px] pointer-events-none" />
 
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-12 md:gap-8">
-        {stats.map((stat, i) => (
-          <motion.div
-            key={stat.label}
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.7, delay: i * 0.15, ease: [0.23, 1, 0.32, 1] }}
-            className="text-center md:text-left"
-          >
-            <AnimatedNumber target={stat.number} suffix={stat.suffix} />
-            <div className="mt-3 h-px w-12 bg-muted-foreground/30 mx-auto md:mx-0" />
-            <p className="mt-3 font-body text-xs tracking-[0.2em] uppercase text-muted-foreground">
-              {stat.label}
-            </p>
-          </motion.div>
-        ))}
-      </div>
+      <div className="relative">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+          className="mb-12"
+        >
+          <div className="flex items-center gap-3 mb-4">
+            <div className="w-2 h-2 rounded-full bg-secondary animate-pulse-glow" />
+            <span className="font-body text-[10px] tracking-[0.4em] uppercase text-secondary/80">
+              Resultados
+            </span>
+          </div>
+          <h2 className="font-display text-3xl md:text-4xl lg:text-5xl tracking-[0.08em] text-foreground font-bold">
+            NÚMEROS
+          </h2>
+        </motion.div>
 
-      {/* Clients strip */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        viewport={{ once: true }}
-        transition={{ duration: 1, delay: 0.6 }}
-        className="mt-24 pt-16 border-t border-border"
-      >
-        <p className="font-body text-[10px] tracking-[0.4em] uppercase text-muted-foreground text-center mb-12">
-          Marcas que confiam no meu trabalho
-        </p>
-        <div className="flex flex-wrap justify-center items-center gap-12 md:gap-20">
-          {["JOVIRONE", "ESA", "TWITCHZOW", "HAUZ", "INVOKERS"].map((brand, i) => (
-            <motion.span
-              key={brand}
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+          {stats.map((stat, i) => (
+            <motion.div
+              key={stat.label}
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: 0.8 + i * 0.1 }}
-              className="font-display text-xl md:text-2xl tracking-[0.2em] text-muted-foreground/40 hover:text-muted-foreground transition-colors duration-500"
+              transition={{ duration: 0.7, delay: i * 0.15 }}
+              className="glass-card rounded-lg p-6 text-center"
             >
-              {brand}
-            </motion.span>
+              <AnimatedNumber target={stat.number} suffix={stat.suffix} />
+              <div className="mt-3 mx-auto h-px w-12 bg-gradient-to-r from-transparent via-primary/40 to-transparent" />
+              <p className="mt-3 font-body text-[10px] tracking-[0.2em] uppercase text-muted-foreground">
+                {stat.label}
+              </p>
+            </motion.div>
           ))}
         </div>
-      </motion.div>
+
+        {/* Clients */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 1, delay: 0.6 }}
+          className="mt-24 pt-16 border-t border-border"
+        >
+          <p className="font-body text-[10px] tracking-[0.4em] uppercase text-muted-foreground text-center mb-12">
+            Marcas que confiam no meu trabalho
+          </p>
+          <div className="flex flex-wrap justify-center items-center gap-12 md:gap-20">
+            {["JOVIRONE", "ESA", "TWITCHZOW", "HAUZ", "INVOKERS"].map((brand, i) => (
+              <motion.span
+                key={brand}
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.8 + i * 0.1 }}
+                className="font-display text-lg md:text-xl tracking-[0.2em] text-muted-foreground/30 hover:text-primary/60 hover:neon-text transition-all duration-500 font-semibold"
+              >
+                {brand}
+              </motion.span>
+            ))}
+          </div>
+        </motion.div>
+      </div>
     </section>
   );
 };
