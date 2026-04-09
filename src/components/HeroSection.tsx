@@ -11,15 +11,8 @@ const navItems = [
 const HeroSection = () => {
   return (
     <section className="relative min-h-screen w-full overflow-hidden bg-background flex flex-col">
-      {/* Video Background */}
-      <div className="absolute inset-0 z-0">
-        <iframe
-          src="https://www.youtube.com/embed/zUwvMSWfiXo?autoplay=1&mute=1&loop=1&playlist=zUwvMSWfiXo&controls=0&showinfo=0&modestbranding=1&rel=0&iv_load_policy=3&disablekb=1&playsinline=1"
-          className="absolute inset-0 w-full h-full pointer-events-none"
-          style={{ transform: "scale(1.2)" }}
-          allow="autoplay; encrypted-media"
-          loading="lazy"
-        />
+      {/* Static Background */}
+      <div className="absolute inset-0 z-0 bg-background">
         <div className="hero-overlay absolute inset-0 z-[1]" />
         <div className="scanline absolute inset-0 z-[2] pointer-events-none" />
       </div>
