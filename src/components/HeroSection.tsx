@@ -70,13 +70,13 @@ const HeroSection = () => {
           transition={{ duration: 1.2, delay: 0.6, ease: [0.23, 1, 0.32, 1] }}
         >
           <span className="font-body text-[10px] md:text-xs tracking-[0.5em] uppercase text-primary/80 block mb-4">
-            // CINEMATIC VIDEO EDITOR
+            // VIDEO EDITOR
           </span>
           <h1 className="font-display text-7xl sm:text-8xl md:text-9xl lg:text-[12rem] leading-[0.85] tracking-[0.05em] font-black">
             <span className="text-gradient">HANS</span>
           </h1>
           <p className="font-body text-sm md:text-base text-muted-foreground mt-6 max-w-md mx-auto leading-relaxed">
-            Transformando gameplay em experiências cinematográficas
+            Transformando gameplay em experiências únicas
           </p>
         </motion.div>
 
