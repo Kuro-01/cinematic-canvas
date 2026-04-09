@@ -28,7 +28,7 @@ const ContactSection = () => {
             CONTATO
           </h2>
           <p className="mt-4 font-body text-sm text-muted-foreground max-w-md leading-relaxed">
-            Tem um projeto em mente? Vamos criar algo cinematográfico juntos.
+            Tem um projeto em mente? Vamos criar algo incrível juntos.
           </p>
         </motion.div>
 
