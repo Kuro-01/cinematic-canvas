@@ -1,165 +1,143 @@
 import { motion } from "framer-motion";
+import { Play, ChevronDown } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const navItems = [
-  { label: "VIDEOS LONGOS", href: "#longformat" },
-  { label: "VIDEOS CURTOS", href: "#shortformat" },
-  { label: "THUMBNAILS", href: "#thumbnails" },
+  { label: "PROJETOS", href: "#portfolio" },
+  { label: "SHOWREEL", href: "/showreel", isRoute: true },
   { label: "CONTATO", href: "#contato", highlight: true },
-];
-
-const featuredThumbnails = [
-  { id: "zUwvMSWfiXo", title: "Nova Shyvana", views: "37K views", likes: "3.1K likes" },
-  { id: "EhugG-LIqX4", title: "Gnar Fila de Mestres", views: "25K views", likes: "2.1K likes" },
-  { id: "FM93OmrhEFI", title: "Joguei Duo com a Minha Ex", views: "80K views", likes: "9.8K likes" },
 ];
 
 const HeroSection = () => {
   return (
-    <section className="relative min-h-screen w-full overflow-hidden bg-background">
+    <section className="relative min-h-screen w-full overflow-hidden bg-background flex flex-col">
+      {/* Video Background */}
+      <div className="absolute inset-0 z-0">
+        <iframe
+          src="https://www.youtube.com/embed/zUwvMSWfiXo?autoplay=1&mute=1&loop=1&playlist=zUwvMSWfiXo&controls=0&showinfo=0&modestbranding=1&rel=0&iv_load_policy=3&disablekb=1&playsinline=1"
+          className="absolute inset-0 w-full h-full pointer-events-none"
+          style={{ transform: "scale(1.2)" }}
+          allow="autoplay; encrypted-media"
+          loading="lazy"
+        />
+        <div className="hero-overlay absolute inset-0 z-[1]" />
+        <div className="scanline absolute inset-0 z-[2] pointer-events-none" />
+      </div>
+
+      {/* Ambient glow orbs */}
+      <div className="absolute top-1/4 -left-32 w-96 h-96 bg-primary/10 rounded-full blur-[120px] z-[1] animate-pulse-glow" />
+      <div className="absolute bottom-1/4 -right-32 w-80 h-80 bg-secondary/10 rounded-full blur-[100px] z-[1] animate-pulse-glow" style={{ animationDelay: "1.5s" }} />
+
       {/* Navigation */}
       <motion.nav
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 1, delay: 0.3 }}
-        className="relative z-10 flex items-center justify-center px-6 md:px-16 pt-8"
+        className="relative z-10 flex items-center justify-between px-6 md:px-16 pt-8"
       >
-        <div className="flex items-center border border-border rounded-full px-2 py-1.5 w-full max-w-4xl justify-between">
-          {navItems.map((item) => (
-            <a
-              key={item.label}
-              href={item.href}
-              className={`font-body text-[10px] md:text-xs tracking-[0.2em] uppercase px-4 md:px-8 py-2 transition-colors duration-300 ${
-                item.highlight
-                  ? "text-secondary"
-                  : "text-muted-foreground hover:text-foreground"
-              }`}
-            >
-              {item.label}
-            </a>
-          ))}
+        <Link to="/" className="font-display text-lg tracking-[0.3em] text-foreground neon-text font-bold">
+          HANS
+        </Link>
+        <div className="flex items-center glass rounded-full px-2 py-1.5 gap-1">
+          {navItems.map((item) =>
+            item.isRoute ? (
+              <Link
+                key={item.label}
+                to={item.href}
+                className={`font-body text-[10px] md:text-xs tracking-[0.15em] uppercase px-4 md:px-6 py-2 rounded-full transition-all duration-300 ${
+                  item.highlight
+                    ? "bg-primary/20 text-primary neon-text"
+                    : "text-muted-foreground hover:text-foreground hover:bg-muted/50"
+                }`}
+              >
+                {item.label}
+              </Link>
+            ) : (
+              <a
+                key={item.label}
+                href={item.href}
+                className={`font-body text-[10px] md:text-xs tracking-[0.15em] uppercase px-4 md:px-6 py-2 rounded-full transition-all duration-300 ${
+                  item.highlight
+                    ? "bg-primary/20 text-primary neon-text"
+                    : "text-muted-foreground hover:text-foreground hover:bg-muted/50"
+                }`}
+              >
+                {item.label}
+              </a>
+            )
+          )}
         </div>
       </motion.nav>
 
       {/* Hero Content */}
-      <div className="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center px-6 md:px-16 pt-16 md:pt-24 pb-16">
-        {/* Left side - Text */}
-        <div>
-          <motion.span
-            initial={{ opacity: 0, x: -30 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, delay: 0.6 }}
-            className="font-body text-[10px] md:text-xs tracking-[0.3em] uppercase text-secondary"
-          >
-            // EDITOR DE VÍDEO
-          </motion.span>
-
-          <motion.h1
-            initial={{ opacity: 0, y: 60 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, delay: 0.8, ease: [0.23, 1, 0.32, 1] }}
-            className="font-display text-6xl sm:text-7xl md:text-8xl lg:text-9xl leading-[0.9] tracking-[0.02em] text-foreground mt-6"
-          >
-            HANS
-          </motion.h1>
-
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 1.2 }}
-            className="mt-8 border-l-2 border-secondary pl-4"
-          >
-            <p className="font-body text-sm md:text-base text-muted-foreground max-w-sm leading-relaxed">
-              Edição de vídeo e thumbnails.
-            </p>
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 1.5 }}
-            className="mt-10 flex items-center gap-4"
-          >
-            <a href="#portfólio">
-              <button className="px-8 py-3 bg-secondary text-secondary-foreground font-body text-xs tracking-[0.2em] uppercase rounded-sm hover:bg-secondary/90 transition-colors">
-                VER PORTFÓLIO
-              </button>
-            </a>
-            <a href="#contato">
-              <button className="btn-cinematic">
-                <span>ENTRE EM CONTATO</span>
-              </button>
-            </a>
-          </motion.div>
-        </div>
-
-        {/* Right side - Featured project thumbnails */}
+      <div className="relative z-10 flex-1 flex flex-col items-center justify-center px-6 text-center">
         <motion.div
-          initial={{ opacity: 0, x: 50 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 1, delay: 1.0, ease: [0.23, 1, 0.32, 1] }}
-          className="relative"
+          initial={{ opacity: 0, scale: 0.9 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 1.2, delay: 0.6, ease: [0.23, 1, 0.32, 1] }}
         >
-          {/* Main featured thumbnail */}
-          <a
-            href={`https://www.youtube.com/watch?v=${featuredThumbnails[0].id}`}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="relative rounded-lg overflow-hidden shadow-2xl block group/main"
-          >
-            <div className="absolute top-3 left-3 z-10 bg-secondary px-3 py-1 rounded-sm">
-              <span className="font-body text-[10px] tracking-[0.2em] uppercase text-secondary-foreground font-semibold">
-                PROJETO EM DESTAQUE
-              </span>
-            </div>
-            <img
-              src={`https://img.youtube.com/vi/${featuredThumbnails[0].id}/maxresdefault.jpg`}
-              alt={featuredThumbnails[0].title}
-              className="w-full aspect-video object-cover transition-transform duration-500 group-hover/main:scale-105"
-              loading="lazy"
-            />
-            <div className="absolute inset-0 bg-background/0 group-hover/main:bg-background/20 transition-colors duration-500 flex items-center justify-center">
-              <span className="opacity-0 group-hover/main:opacity-100 transition-opacity duration-500 text-foreground text-4xl">▶</span>
-            </div>
-            <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-background/90 to-transparent p-4">
-              <div className="flex items-center gap-4 text-muted-foreground font-body text-xs">
-                <span className="flex items-center gap-1">👁 {featuredThumbnails[0].views}</span>
-                <span className="flex items-center gap-1">👍 {featuredThumbnails[0].likes}</span>
-              </div>
-            </div>
-          </a>
+          <span className="font-body text-[10px] md:text-xs tracking-[0.5em] uppercase text-primary/80 block mb-4">
+            // CINEMATIC VIDEO EDITOR
+          </span>
+          <h1 className="font-display text-7xl sm:text-8xl md:text-9xl lg:text-[12rem] leading-[0.85] tracking-[0.05em] font-black">
+            <span className="text-gradient">HANS</span>
+          </h1>
+          <p className="font-body text-sm md:text-base text-muted-foreground mt-6 max-w-md mx-auto leading-relaxed">
+            Transformando gameplay em experiências cinematográficas
+          </p>
+        </motion.div>
 
-          {/* Stacked smaller thumbnails */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 1.4 }}
-            className="absolute -bottom-6 -right-4 md:right-0 flex gap-2"
-          >
-            {featuredThumbnails.slice(1).map((thumb, i) => (
-              <a
-                key={thumb.id}
-                href={`https://www.youtube.com/watch?v=${thumb.id}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-32 md:w-40 rounded-md overflow-hidden border-2 border-background shadow-xl group/thumb transition-transform duration-300 hover:scale-110 hover:z-10"
-                style={{ transform: `rotate(${i === 0 ? -3 : 2}deg)` }}
-              >
-                <img
-                  src={`https://img.youtube.com/vi/${thumb.id}/mqdefault.jpg`}
-                  alt={thumb.title}
-                  className="w-full aspect-video object-cover transition-transform duration-500 group-hover/thumb:scale-105"
-                  loading="lazy"
-                />
-                <div className="bg-card p-1.5">
-                  <span className="font-body text-[8px] text-muted-foreground">
-                    {thumb.views}
-                  </span>
-                </div>
-              </a>
-            ))}
-          </motion.div>
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 1.2 }}
+          className="mt-10 flex items-center gap-4"
+        >
+          <a href="#portfolio" className="btn-primary-glow flex items-center gap-2">
+            <Play className="w-4 h-4" />
+            VER PROJETOS
+          </a>
+          <a href="#contato" className="btn-cinematic">
+            <span>CONTATO</span>
+          </a>
+        </motion.div>
+
+        {/* HUD decorations */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 1, delay: 1.5 }}
+          className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
+        >
+          <span className="font-body text-[9px] tracking-[0.4em] uppercase text-muted-foreground/60">
+            SCROLL
+          </span>
+          <ChevronDown className="w-4 h-4 text-primary/60 animate-float" />
         </motion.div>
       </div>
+
+      {/* Side HUD elements */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 0.4 }}
+        transition={{ duration: 1, delay: 2 }}
+        className="absolute left-6 top-1/2 -translate-y-1/2 z-10 hidden lg:flex flex-col gap-3"
+      >
+        {[...Array(5)].map((_, i) => (
+          <div key={i} className="w-1 bg-primary/30 rounded-full" style={{ height: `${20 + Math.random() * 30}px` }} />
+        ))}
+      </motion.div>
+
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 0.4 }}
+        transition={{ duration: 1, delay: 2 }}
+        className="absolute right-6 top-1/2 -translate-y-1/2 z-10 hidden lg:flex flex-col items-end gap-2"
+      >
+        <span className="font-body text-[8px] tracking-[0.3em] text-muted-foreground/40">REC</span>
+        <div className="w-2 h-2 rounded-full bg-destructive/60 animate-pulse-glow" />
+        <span className="font-body text-[8px] tracking-[0.3em] text-muted-foreground/30 mt-2">4K · 60FPS</span>
+      </motion.div>
     </section>
   );
 };
