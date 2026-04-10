@@ -190,6 +190,15 @@ export const videoProjects: VideoProject[] = [
     youtubeId: "maeG6zw_SwQ",
     format: "short",
   },
+  {
+    id: "18",
+    slug: "shorts-hauz-teste",
+    title: "SHORTS HAUZ TESTE",
+    description: "Short de teste do Hauz.",
+    tags: ["shorts", "hauz"],
+    youtubeId: "_gWk13hTNMM",
+    format: "short",
+  },
 ];
 
 export const getFeaturedProjects = () => videoProjects.filter((v) => v.featured);
